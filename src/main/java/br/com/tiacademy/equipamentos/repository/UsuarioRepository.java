@@ -3,9 +3,9 @@ package br.com.tiacademy.equipamentos.repository;
 import org.springframework.stereotype.Repository;
 
 import br.com.tiacademy.equipamentos.core.crud.CrudRepository;
-import br.com.tiacademy.equipamentos.domain.Equipamentos;
+import br.com.tiacademy.equipamentos.domain.Usuario;
 
 @Repository
-public interface EquipamentosRepository extends CrudRepository<Equipamentos, Long>{
+public interface UsuarioRepository extends CrudRepository<Usuario,Long>{
 
 }

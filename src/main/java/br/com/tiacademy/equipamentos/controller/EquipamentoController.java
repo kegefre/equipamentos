@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tiacademy.equipamentos.core.crud.CrudController;
-import br.com.tiacademy.equipamentos.domain.Usuarios;
+import br.com.tiacademy.equipamentos.domain.Equipamento;
 
 @RestController
-@RequestMapping("/usuarios")
-public class UsuariosController extends CrudController<Usuarios, Long>{
+@RequestMapping("/equipamentos")
+public class EquipamentoController extends CrudController<Equipamento, Long>{
 
 }
