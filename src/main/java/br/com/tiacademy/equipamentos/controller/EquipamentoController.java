@@ -7,7 +7,7 @@ import br.com.tiacademy.equipamentos.core.crud.CrudController;
 import br.com.tiacademy.equipamentos.domain.Equipamento;
 
 @RestController
-@RequestMapping("/equipamentos")
+@RequestMapping("/equipamento")
 public class EquipamentoController extends CrudController<Equipamento, Long>{
 
 }

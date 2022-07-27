@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -26,11 +27,15 @@ public class Registro implements Serializable {
 	private LocalDate data_s;
 	private LocalDate data_e;
 	private int situacao;
+	//private Long equip_id;
+	//private Long usuario_id;
 	
 	@ManyToOne
+	@JoinColumn(name="equip_id", referencedColumnName = "id")
 	private Equipamento equipamento;
 	
 	@ManyToOne
+	@JoinColumn(name="usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 
 }

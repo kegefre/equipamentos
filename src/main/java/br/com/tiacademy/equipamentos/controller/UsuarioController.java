@@ -7,7 +7,7 @@ import br.com.tiacademy.equipamentos.core.crud.CrudController;
 import br.com.tiacademy.equipamentos.domain.Usuario;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/usuario")
 public class UsuarioController extends CrudController<Usuario, Long>{
 
 }

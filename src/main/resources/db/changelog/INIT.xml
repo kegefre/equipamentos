@@ -7,67 +7,69 @@
 
 	<changeSet id="1" author="Kellis">
 		<preConditions onFail="MARK_RAN"
-			onFailMessage="Já existe a tabela equipamentos">
+			onFailMessage="Já existe a tabela equipamento">
 			<not>
-				<tableExists tableName="equipamentos" />
+				<tableExists tableName="equipamento" />
 			</not>
 		</preConditions>
-		<createTable tableName="equipamentos">
+		<createTable tableName="equipamento">
 			<column name="id" type="int">
 				<constraints nullable="false" primaryKey="true"
-					primaryKeyName="pk_equipamentos" />
+					primaryKeyName="pk_equipamento" />
 			</column>
 			<column name="equipamento" type="${alfanum}">
 				<constraints nullable="false" />
 			</column>
-			<column name="quantidade" type="${numerico}">
+			<column name="quantidade" type="int">
 				<constraints nullable="false" />
 			</column>
-			<column name="disponiveis" type="${numerico}">
+			<column name="disponiveis" type="int">
 				<constraints nullable="false" />
 			</column>						
 		</createTable>
-		<addAutoIncrement tableName="equipamentos"
+		<addAutoIncrement tableName="equipamento"
 			columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
 	</changeSet>
 
 	<changeSet id="2" author="Kellis">
 		<preConditions onFail="MARK_RAN"
-			onFailMessage="Já existe a tabela usuarios">
+			onFailMessage="Já existe a tabela usuario">
 			<not>
-				<tableExists tableName="usuarios" />
+				<tableExists tableName="usuario" />
 			</not>
 		</preConditions>
-		<createTable tableName="usuarios">
+		<createTable tableName="usuario">
 			<column name="id" type="int">
 				<constraints nullable="false" primaryKey="true"
-					primaryKeyName="pk_usuarios" />
+					primaryKeyName="pk_usuario" />
 			</column>
 			<column name="usuario" type="${alfanum}">
 				<constraints nullable="false" />
 			</column>
 		</createTable>
-		<addAutoIncrement tableName="usuarios"
+		<addAutoIncrement tableName="usuario"
 			columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
 	</changeSet>
 
 	<changeSet id="3" author="Kellis">
 		<preConditions onFail="MARK_RAN"
-			onFailMessage="Já existe a tabela registros">
+			onFailMessage="Já existe a tabela registro">
 			<not>
-				<tableExists tableName="registros" />
+				<tableExists tableName="registro" />
 			</not>
 		</preConditions>
-		<createTable tableName="registros">
+		<createTable tableName="registro">
 			<column name="id" type="int">
 				<constraints nullable="false" primaryKey="true"
-					primaryKeyName="pk_registros" />
+					primaryKeyName="pk_registro" />
 			</column>
-			<column name="equip_id" type="${numerico}">
-				<constraints nullable="false" />
+			<column name="equip_id" type="int">
+				<constraints foreignKeyName="fk_registro_equipamento"
+					referencedTableName="equipamento" referencedColumnNames="id" />
 			</column>
-			<column name="usuario_id" type="${numerico}">
-				<constraints nullable="false" />
+			<column name="usuario_id" type="int">
+				<constraints foreignKeyName="fk_registro_usuario"
+					referencedTableName="usuario" referencedColumnNames="id" />
 			</column>
 			<column name="data_s" type="${data}">
 				<constraints nullable="false" />
@@ -75,11 +77,11 @@
 			<column name="data_e" type="${data}">
 				<constraints nullable="false" />
 			</column>
-			<column name="situacao" type="${numerico}">
+			<column name="situacao" type="int">
 				<constraints nullable="false" />
 			</column>
 		</createTable>
-		<addAutoIncrement tableName="registros"
+		<addAutoIncrement tableName="registro"
 			columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
 	</changeSet>
 </databaseChangeLog>

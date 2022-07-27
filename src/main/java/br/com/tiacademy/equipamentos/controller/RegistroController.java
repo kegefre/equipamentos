@@ -12,7 +12,7 @@ import br.com.tiacademy.equipamentos.domain.Registro;
 import br.com.tiacademy.equipamentos.service.RegistrosService;
 
 @RestController
-@RequestMapping("/registros")
+@RequestMapping("/registro")
 public class RegistroController extends CrudController<Registro, Long>{
 	
 	@Autowired

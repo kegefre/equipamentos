@@ -14,8 +14,8 @@ public class RegistrosService extends CrudService<Registro, Long> {
 	
 	@Override
 	protected Registro editarEntidade(Registro recuperado, Registro entidade) {
-		recuperado.setEquip_id(entidade.getEquip_id());
-		recuperado.setUsuario_id(entidade.getUsuario_id());
+		recuperado.setUsuario(entidade.getUsuario());
+		recuperado.setEquipamento(entidade.getEquipamento());
 		recuperado.setData_s(entidade.getData_s());
 		recuperado.setData_e(entidade.getData_e());
 		recuperado.setSituacao(entidade.getSituacao());
@@ -24,18 +24,18 @@ public class RegistrosService extends CrudService<Registro, Long> {
 	
 	public Registro regSaida(Registro registro) {
 		Registro salvo=this.criar(registro);
-		Equipamento equip = serviceEquip.porId(registro.getEquip_id());
+		Equipamento equip = serviceEquip.porId(registro.getEquipamento().getId());
 		equip.setDisponiveis(equip.getDisponiveis()-1);
-		serviceEquip.editar(registro.getEquip_id(),equip);
+		serviceEquip.editar(registro.getEquipamento().getId(),equip);
 		return salvo;
 	}
 	
 	public Registro regEntrada(Registro registro) {
 		registro.setSituacao(2);
+		Equipamento equip = serviceEquip.porId(registro.getEquipamento().getId());
 		this.editar(registro.getId(), registro);
-		Equipamento equip = serviceEquip.porId(registro.getEquip_id());
 		equip.setDisponiveis(equip.getDisponiveis()+1);
-		serviceEquip.editar(registro.getEquip_id(),equip);
+		serviceEquip.editar(registro.getEquipamento().getId(),equip);
 		return registro;
 	}
 	
