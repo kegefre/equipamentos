@@ -6,7 +6,7 @@ import br.com.tiacademy.equipamentos.core.crud.CrudService;
 import br.com.tiacademy.equipamentos.domain.Equipamento;
 
 @Service
-public class EquipamentosService extends CrudService<Equipamento, Long> {
+public class EquipamentoService extends CrudService<Equipamento, Long> {
 	@Override
 	protected Equipamento editarEntidade(Equipamento recuperado, Equipamento entidade) {
 		recuperado.setEquipamento(entidade.getEquipamento());

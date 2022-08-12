@@ -8,14 +8,14 @@ import br.com.tiacademy.equipamentos.domain.Equipamento;
 import br.com.tiacademy.equipamentos.domain.Registro;
 
 @Service
-public class RegistrosService extends CrudService<Registro, Long> {
+public class RegistroService extends CrudService<Registro, Long> {
 	@Autowired
-	private EquipamentosService serviceEquip;
+	private EquipamentoService serviceEquip;
 	
 	@Override
 	protected Registro editarEntidade(Registro recuperado, Registro entidade) {
-		recuperado.setEquip_id(entidade.getEquip_id());
-		recuperado.setUsuario_id(entidade.getUsuario_id());
+		recuperado.setEquipamentoReg(entidade.getEquipamentoReg());
+		recuperado.setUsuarioReg(entidade.getUsuarioReg());
 		recuperado.setData_s(entidade.getData_s());
 		recuperado.setData_e(entidade.getData_e());
 		recuperado.setSituacao(entidade.getSituacao());
@@ -24,18 +24,18 @@ public class RegistrosService extends CrudService<Registro, Long> {
 	
 	public Registro regSaida(Registro registro) {
 		Registro salvo=this.criar(registro);
-		Equipamento equip = serviceEquip.porId(registro.getEquip_id());
+		Equipamento equip = registro.getEquipamentoReg();
 		equip.setDisponiveis(equip.getDisponiveis()-1);
-		serviceEquip.editar(registro.getEquip_id(),equip);
+		serviceEquip.editar(registro.getEquipamentoReg().getId(),equip);
 		return salvo;
 	}
 	
 	public Registro regEntrada(Registro registro) {
 		registro.setSituacao(2);
 		this.editar(registro.getId(), registro);
-		Equipamento equip = serviceEquip.porId(registro.getEquip_id());
+		Equipamento equip = registro.getEquipamentoReg();
 		equip.setDisponiveis(equip.getDisponiveis()+1);
-		serviceEquip.editar(registro.getEquip_id(),equip);
+		serviceEquip.editar(registro.getEquipamentoReg().getId(),equip);
 		return registro;
 	}
 	

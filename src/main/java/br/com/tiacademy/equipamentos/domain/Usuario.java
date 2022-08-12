@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,7 @@ public class Usuario implements Serializable{
 	private Long id;
 
 	private String usuario;
+	
+	@OneToMany(mappedBy="usuarioReg")
+	private Registro registro;
 }

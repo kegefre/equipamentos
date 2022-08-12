@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tiacademy.equipamentos.core.crud.CrudController;
 import br.com.tiacademy.equipamentos.domain.Registro;
-import br.com.tiacademy.equipamentos.service.RegistrosService;
+import br.com.tiacademy.equipamentos.service.RegistroService;
 
 @RestController
 @RequestMapping("/registros")
 public class RegistroController extends CrudController<Registro, Long>{
 	
 	@Autowired
-	RegistrosService service;
+	RegistroService service;
 	
 	@PostMapping("/saida")
 	public Registro regSaida(@RequestBody Registro registro) {
